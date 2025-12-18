@@ -45,9 +45,16 @@ const rotateLeftBtn = document.querySelector("#rotate-left-btn")
 const rotateRightBtn = document.querySelector("#rotate-right-btn")
 const flipHBtn = document.querySelector("#flip-h-btn")
 const flipVBtn = document.querySelector("#flip-v-btn")
+const cropBtn = document.querySelector("#crop-btn")
+const applyCropBtn = document.querySelector("#apply-crop-btn")
+const cancelCropBtn = document.querySelector("#cancel-crop-btn")
+const cropControls = document.querySelector(".crop-controls")
+const imgContainer = document.querySelector(".img-container")
+const cropImage = document.querySelector("#crop-image")
 
 let file = null;
 let originalImage = null;
+let cropper = null;
 
 // Filter Metadata
 const filterMeta = {
@@ -261,6 +268,81 @@ if (flipVBtn) {
         saveState();
         editorState.config.transform.flipY *= -1;
         renderImage();
+    });
+}
+
+// Crop Logic
+if (cropBtn) {
+    cropBtn.addEventListener('click', () => {
+        if (!originalImage) {
+            alert("No image to crop!");
+            return;
+        }
+
+        // Hide Canvas, Show Cropper Image
+        imageCanvas.style.display = 'none';
+        imgContainer.style.display = 'block';
+        cropControls.style.display = 'flex';
+
+        // Use current transformed canvas as source for crop
+        // to respect previous edits/rotations
+        // (Simplification: We crop what we see)
+        cropImage.src = imageCanvas.toDataURL();
+
+        if (cropper) {
+            cropper.destroy();
+        }
+
+        cropper = new Cropper(cropImage, {
+            viewMode: 1,
+            dragMode: 'move',
+            autoCropArea: 1,
+            ready() {
+                // strict mode?
+            }
+        });
+    });
+}
+
+if (applyCropBtn) {
+    applyCropBtn.addEventListener('click', () => {
+        if (!cropper) return;
+
+        const croppedCanvas = cropper.getCroppedCanvas(); // Get result
+        if (!croppedCanvas) return;
+
+        // Save state before modifying originalImage (destructive to pipeline input)
+        saveState();
+
+        // Update originalImage to be the cropped version
+        originalImage = new Image();
+        originalImage.src = croppedCanvas.toDataURL();
+        originalImage.onload = () => {
+            // Reset transforms because they are baked into the crop result
+            editorState.config.transform = { rotate: 0, flipX: 1, flipY: 1 };
+
+            // Clean up UI
+            cropper.destroy();
+            cropper = null;
+            imgContainer.style.display = 'none';
+            cropControls.style.display = 'none';
+            imageCanvas.style.display = 'block';
+
+            updateUI();
+            renderImage();
+        };
+    });
+}
+
+if (cancelCropBtn) {
+    cancelCropBtn.addEventListener('click', () => {
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        imgContainer.style.display = 'none';
+        cropControls.style.display = 'none';
+        imageCanvas.style.display = 'block';
     });
 }
 
