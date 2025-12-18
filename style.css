@@ -50,7 +50,15 @@ main section .left {
 main section .top {
     display: flex;
     align-items: center;
-    gap: var(--gutter-md);
+    gap: var(--gutter-lg);
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+.toolbar-group {
+    display: flex;
+    gap: var(--gutter-sm);
+    align-items: center;
 }
 
 main section .bottom {
