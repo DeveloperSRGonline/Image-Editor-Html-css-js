@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="left">
+                <div class="top">
+                    <label id="image-input-label" for="image-input" class="btn">Choose Image
+                        <input type="file" id="image-input" accept="image/*" hidden>
+                    </label>
+                    <button class="btn" id="reset-btn">Reset</button>
+                    <button class="btn" id="download-btn">Download</button>
+                </div>
+                <div class="bottom">
+                    <div class="placeholder">
+                        <i class="ri-image-line"></i>
+                        <p>No image chosen</p>
+                    </div>
+                    <canvas id="image-canvas"></canvas>
+                </div>
+            </div>
+            <div class="right">
+                <h2>filters</h2>
+                <div class="filters-container">
+
+                </div>
+                <h2>Presets</h2>
+                <div class="presets-container">
+                    <button class="btn preset-btn" data-preset="vintage">Vintage</button>
+                    <button class="btn preset-btn" data-preset="lomo">Lomo</button>
+                    <button class="btn preset-btn" data-preset="clarity">Clarity</button>
+                    <button class="btn preset-btn" data-preset="sincity">Sin City</button>
+                    <button class="btn preset-btn" data-preset="crossprocess">Cross Process</button>
+                    <button class="btn preset-btn" data-preset="pinhole">Pinhole</button>
+                    <button class="btn preset-btn" data-preset="nostalgia">Nostalgia</button>
+                    <button class="btn preset-btn" data-preset="majestic">Majestic</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

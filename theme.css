@@ -1,0 +1,72 @@
+:root {
+    /*  bg Colors */
+    --bg-primary-color: rgb(17, 17, 17);
+    --bg-secondary-color: rgb(54, 54, 54);
+    --bg-active-color: rgb(233, 233, 233);
+    --bg-danger-color: rgb(200, 50, 50);
+    --bg-success-color: rgb(41, 170, 41);
+
+    /* text-colors */
+    --text-primary-color: rgb(233, 233, 233);
+    --text-secondary-color: rgb(17, 17, 17);
+    --text-tertiary-color: rgb(17, 17, 17);
+    --text-active-color: rgb(17, 17, 17);
+
+    /*  padding */
+    --padding-sm: 1rem;
+    --padding-md: 1.5rem;
+    --padding-lg: 2rem;
+    --padding-xl: 3rem;
+    --padding-2xl: 4rem;
+
+    /* gutter */
+    --gutter-sm: 0.5rem;
+    --gutter-md: 1rem;
+    --gutter-lg: 1.5rem;
+    --gutter-xl: 2rem;
+    --gutter-2xl: 2.5rem;
+
+    /* border-radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+    --border-radius-xl: 12px;
+    --border-radius-2xl: 16px;
+
+    /* border */
+    --border-sm: 1px;
+    --border-md: 2px;
+    --border-lg: 3px;
+    --border-xl: 4px;
+    --border-2xl: 5px;
+
+    /* margin */
+    --margin-sm: 0.5rem;
+    --margin-md: 1rem;
+    --margin-lg: 1.5rem;
+    --margin-xl: 2rem;
+    --margin-2xl: 2.5rem;
+
+
+    /* fontsize */
+    --fontsize-sm: 12px;
+    --fontsize-md: 14px;
+    --fontsize-lg: 16px;
+    --fontsize-xl: 18px;
+    --fontsize-2xl: 20px;
+    --fontsize-3xl: 24px;
+    --fontsize-4xl: 32px;
+    --fontsize-5xl: 40px;
+    --fontsize-6xl: 48px;
+    --fontsize-7xl: 56px;
+    --fontsize-8xl: 64px;
+
+
+    /* font-weight */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+
+}
